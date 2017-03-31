@@ -1,3 +1,5 @@
+// Fred Limouzin 2017
+
 class World {
   Cell[][] cells;
   int caw;
@@ -23,7 +25,6 @@ class World {
   }
 
   void spawn (int x, int y, int state) {
-    println("spawned");
     cells[x][y].setState(state);
   }
 
