@@ -105,6 +105,15 @@ class World {
         case 2:
           c = color(0, 0, 255);
           break;
+        case 3:
+          c = color(255, 0, 255);
+          break;
+        case 4:
+          c = color(0, 255, 255);
+          break;
+        case 5:
+          c = color(255, 255, 0);
+          break;
         default:
           c = color(255);
         }
