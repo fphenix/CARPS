@@ -5,7 +5,9 @@ World world;
 
 void setup () {
   size(600, 400);
+  //               scale, nbStates (3 to 6), Moore or not VonNeumann neighbors, neighbors' distance
   world = new World(3, 3, false, 1);
+  // nb random cells at start
   world.generate(50);
 }
 
