@@ -1,3 +1,5 @@
+// Fred Limouzin 2017
+
 class Cell {
   PVector pos;
   int state;
