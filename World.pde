@@ -8,6 +8,7 @@ class World {
   boolean moore_notVonNeumann;
   int neighborDistance;
   int nbStates;
+  EnumMode mode;
 
   World (int tscl, int tnbs, boolean tMorVonN, int td) {
     this.scale = tscl;
@@ -16,6 +17,7 @@ class World {
     this.moore_notVonNeumann = tMorVonN;
     this.neighborDistance = td;
     this.nbStates = tnbs;
+    this.mode = EnumMode.DEFAULT;
     cells = new Cell[this.caw][this.cah];
     for (int x = 0; x < this.caw; x++) {
       for (int y = 0; y < this.cah; y++) {
@@ -36,6 +38,10 @@ class World {
       state = floor(random(this.nbStates));
       this.spawn(x, y, state);
     }
+  }
+
+  void setMode (EnumMode em) {
+    this.mode = em;
   }
 
   void setVonNeumann() {
@@ -97,22 +103,25 @@ class World {
       for (int y = 0; y < this.cah; y++) {
         switch (cells[x][y].state) {
         case 0:
-          c = color(255, 0, 0);
+          c = (this.mode == EnumMode.RAINBOW) ? color(255, 0, 0) : color(255, 0, 0);
           break;
         case 1:
-          c = color(0, 255, 0);
+          c = (this.mode == EnumMode.RAINBOW) ? color(255, 127, 0) : color(0, 255, 0);
           break;
         case 2:
-          c = color(0, 0, 255);
+          c = (this.mode == EnumMode.RAINBOW) ? color(255, 255, 0) : color(0, 0, 255);
           break;
         case 3:
-          c = color(255, 0, 255);
+          c = (this.mode == EnumMode.RAINBOW) ? color(0, 255, 0) : color(255, 0, 255);
           break;
         case 4:
-          c = color(0, 255, 255);
+          c = (this.mode == EnumMode.RAINBOW) ? color(0, 255, 255) : color(0, 255, 255);
           break;
         case 5:
-          c = color(255, 255, 0);
+          c = (this.mode == EnumMode.RAINBOW) ? color(0, 0, 255) : color(255, 255, 0);
+          break;
+        case 6:
+          c = (this.mode == EnumMode.RAINBOW) ? color(150, 0, 210) : color(127, 255, 255);
           break;
         default:
           c = color(255);

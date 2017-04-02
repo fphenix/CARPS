@@ -1,0 +1,4 @@
+enum EnumMode {
+  DEFAULT,
+  RAINBOW
+}

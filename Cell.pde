@@ -3,7 +3,7 @@
 class Cell {
   PVector pos;
   int state;
-  int prevstate;
+  int nextState;
   int nbStates;
   int health;
   int scale;
@@ -11,14 +11,14 @@ class Cell {
   Cell (PVector tpos, int tscl, int tnbs) {
     this.pos = new PVector(tpos.x, tpos.y);
     this.state = -1;
-    this.prevstate = this.state;
+    this.nextState = -1;
     this.nbStates = tnbs;
     this.health = 10;
     this.scale = tscl;
   }
 
   void setState(int t) {
-    this.state = t;
+    this.nextState = t;
   }
 
   int wrap (int a, int wa) {
@@ -26,11 +26,11 @@ class Cell {
   }
 
   void update () {
-    this.prevstate = this.state;
     if (this.health == 0) {
       this.health = 10;
-      this.state = (this.state + 1) % this.nbStates;
+      this.nextState = (this.nextState + 1) % this.nbStates;
     }
+    this.state = this.nextState;
   }
 
   void strengthens () {
